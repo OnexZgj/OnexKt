@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mContext: Context
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main1)
+        setContentView(R.layout.activity_main)
 
         mContext = this
         btn_request.setOnClickListener {

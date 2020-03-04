@@ -19,6 +19,14 @@ class HomeFragment : BaseMvpFragment<HomeContract.View, HomePresenter>(), HomeCo
     }
 
     override fun initView(rootView: View?, savedInstanceState: Bundle?) {
+
+    }
+
+    override fun initData() {
+        super.initData()
+
+        mPresent.getBanner()
+
     }
 
     override fun getLayoutId(): Int {
