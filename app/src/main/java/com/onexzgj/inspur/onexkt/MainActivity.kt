@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
 import com.onexzgj.inspur.onexkt.ui.home.HomeFragment
+import com.onexzgj.inspur.onexkt.utils.StateBar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : FragmentActivity() {
@@ -27,6 +28,7 @@ class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        StateBar.fitSystemBar(this)
         setContentView(R.layout.activity_main)
 
         mContext = this

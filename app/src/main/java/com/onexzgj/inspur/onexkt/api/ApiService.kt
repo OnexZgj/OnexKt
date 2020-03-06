@@ -1,9 +1,6 @@
 package com.onexzgj.inspur.onexkt.api
 
-import com.onexzgj.inspur.onexkt.model.Article
-import com.onexzgj.inspur.onexkt.model.ArticleResponse
-import com.onexzgj.inspur.onexkt.model.Banner
-import com.onexzgj.inspur.onexkt.model.BaseResponse
+import com.onexzgj.inspur.onexkt.model.*
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -28,6 +25,8 @@ interface ApiService {
     fun getArticles(@Path("page") page: Int): Observable<BaseResponse<ArticleResponse>>
 
 
+    @GET("project/tree/json")
+    fun getProjectTab(): Observable<BaseResponse<List<ProjectTab>>>
 
 
 }
