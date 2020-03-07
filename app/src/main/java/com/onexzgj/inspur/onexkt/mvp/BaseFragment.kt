@@ -38,9 +38,13 @@ abstract class BaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(getLayoutId(), container, false)
-        initView(rootView, savedInstanceState)
-        initData()
+
         return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initView(view, savedInstanceState)
+        initData()
     }
 
     abstract fun initData()

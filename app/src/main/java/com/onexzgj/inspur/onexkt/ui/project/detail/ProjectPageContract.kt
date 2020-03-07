@@ -1,5 +1,6 @@
 package com.onexzgj.inspur.onexkt.ui.project.detail
 
+import com.onexzgj.inspur.onexkt.model.Project
 import com.onexzgj.inspur.onexkt.model.ProjectTab
 import com.onexzgj.inspur.onexkt.mvp.IView
 
@@ -11,11 +12,14 @@ import com.onexzgj.inspur.onexkt.mvp.IView
 interface ProjectPageContract {
     interface View : IView {
 
-        fun showTabs(list: List<ProjectTab>?)
+        fun showPageData(curPage: Int, list: List<Project>?)
 
     }
 
     interface Presenter {
-        fun getTabs()
+        /**
+         * 获取页面的详细数据
+         */
+        fun getPageData(mCurPage: Int,cid: Int)
     }
 }

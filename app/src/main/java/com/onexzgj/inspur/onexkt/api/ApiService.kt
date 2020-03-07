@@ -29,4 +29,10 @@ interface ApiService {
     fun getProjectTab(): Observable<BaseResponse<List<ProjectTab>>>
 
 
+    /**
+     * 获取项目下面的完整的数据
+     */
+    @GET("project/list/{page}/json")
+    fun getProjectDetail(@Path("page") page: Int, @Query("cid") cid: Int): Observable<BaseResponse<ProjectResponse>>
+
 }
