@@ -13,6 +13,7 @@ import com.onexzgj.inspur.onexkt.mvp.BaseMvpFragment
 import com.onexzgj.inspur.onexkt.utils.CID
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import kotlinx.android.synthetic.main.project_page.*
 
 /**
@@ -52,6 +53,19 @@ class ProjectPageFragment : BaseMvpFragment<ProjectPageContract.View, ProjectPag
                 mPresent.getPageData(mCurPage, cid)
             }
         })
+
+        srl_project.setOnRefreshListener(object : OnRefreshListener {
+            override fun onRefresh(refreshLayout: RefreshLayout) {
+                mCurPage = 0
+                mPresent.getPageData(mCurPage, cid)
+            }
+
+        })
+
+
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+            showInfo("123" + position)
+        }
     }
 
     override fun getLayoutId(): Int {
@@ -72,11 +86,17 @@ class ProjectPageFragment : BaseMvpFragment<ProjectPageContract.View, ProjectPag
 
     override fun initData() {
         super.initData()
+        showLoading()
         mPresent.getPageData(mCurPage, cid)
     }
 
     override fun showPageData(curPage: Int, data: List<Project>?) {
-        mCurPage = curPage
+        srl_project?.finishRefresh()
+        srl_project?.finishLoadMore()
+
+        dismissLoading()
+
+        mCurPage = curPage + 1
         if (data != null) {
             if (mCurPage == 0) {
                 mAdapter.setNewData(data)
