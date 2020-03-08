@@ -1,10 +1,7 @@
 package com.onexzgj.inspur.onexkt.ui.project.detail
 
-import android.media.SoundPool
 import android.os.Bundle
 import android.view.View
-import android.widget.Adapter
-import android.widget.TextView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.onexzgj.inspur.onexkt.R
@@ -25,6 +22,7 @@ class ProjectPageFragment : BaseMvpFragment<ProjectPageContract.View, ProjectPag
     ProjectPageContract.View {
 
 
+    private var datas = ArrayList<Project>()
     private lateinit var mAdapter: ProjectDetailRvAdapter
     private var cid: Int = 0
     private var mCurPage: Int = 0
@@ -57,9 +55,9 @@ class ProjectPageFragment : BaseMvpFragment<ProjectPageContract.View, ProjectPag
         srl_project.setOnRefreshListener(object : OnRefreshListener {
             override fun onRefresh(refreshLayout: RefreshLayout) {
                 mCurPage = 0
+                datas.clear()
                 mPresent.getPageData(mCurPage, cid)
             }
-
         })
 
 
@@ -98,12 +96,19 @@ class ProjectPageFragment : BaseMvpFragment<ProjectPageContract.View, ProjectPag
 
         mCurPage = curPage + 1
         if (data != null) {
-            if (mCurPage == 0) {
-                mAdapter.setNewData(data)
-            } else {
-                mAdapter.addData(data)
-            }
+            datas.addAll(data)
         }
+        mAdapter.setNewData(datas)
+
+
+//            if (mCurPage == 0) {
+//                mAdapter.setNewData(data)
+//            } else {
+//                mAdapter.addData(data)
+//            }
+
+        dismissLoading()
+
 
     }
 }
