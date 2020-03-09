@@ -25,6 +25,9 @@ interface ApiService {
     fun getArticles(@Path("page") page: Int): Observable<BaseResponse<ArticleResponse>>
 
 
+    /**
+     * 获取项目体系
+     */
     @GET("project/tree/json")
     fun getProjectTab(): Observable<BaseResponse<List<ProjectTab>>>
 
@@ -34,5 +37,13 @@ interface ApiService {
      */
     @GET("project/list/{page}/json")
     fun getProjectDetail(@Path("page") page: Int, @Query("cid") cid: Int): Observable<BaseResponse<ProjectResponse>>
+
+
+    /**
+     * 获取知识体系
+     */
+    @GET("tree/json")
+    fun getSystemTree():Observable<BaseResponse<List<SystemTree>>>
+
 
 }

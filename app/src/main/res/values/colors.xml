@@ -12,4 +12,6 @@
     <color name="color_8299a3">#BFCACF</color>
     <color name="color_5b8f8a">#A2B8B4</color>
     <color name="color_7f7099">#C7C3D1</color>
+
+    <color name="color_f32">#ff323232</color>
 </resources>

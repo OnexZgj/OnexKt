@@ -60,5 +60,7 @@ dependencies {
     implementation "com.jaeger.statusbarutil:library:1.5.1"
     implementation "com.airbnb.android:lottie:2.7.0"
 
+    implementation "com.hyman:flowlayout-lib:1.1.2"
+
 
 }

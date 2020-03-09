@@ -7,7 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 import com.onexzgj.inspur.onexkt.ui.project.ProjectFragment
 import com.onexzgj.inspur.onexkt.ui.home.HomeFragment
-import com.onexzgj.inspur.onexkt.ui.notifications.NotificationsFragment
+import com.onexzgj.inspur.onexkt.ui.system.SystemFragment
 import com.onexzgj.inspur.onexkt.utils.StateBar
 import kotlinx.android.synthetic.main.activity_bottom.*
 
@@ -23,7 +23,7 @@ class BottomActivity : AppCompatActivity() {
     private val fragmentNames = arrayOf(
         HomeFragment::class.java.name,
         ProjectFragment::class.java.name,
-        NotificationsFragment::class.java.name
+        SystemFragment::class.java.name
     )
 
 
