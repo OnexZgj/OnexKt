@@ -1,16 +1,16 @@
 package com.onexzgj.inspur.onexkt.ui.system
 
-
-import android.util.Log
-import android.widget.TextView
+import android.content.Intent
+import android.os.Bundle
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.onexzgj.inspur.onexkt.R
 import com.onexzgj.inspur.onexkt.model.SystemTree
+import com.onexzgj.inspur.onexkt.ui.system.detail.SystemDetailActivity
+import com.onexzgj.inspur.onexkt.utils.CID
+import com.onexzgj.inspur.onexkt.utils.TITLE
 import com.zhy.view.flowlayout.FlowLayout
-import com.zhy.view.flowlayout.TagAdapter
 import com.zhy.view.flowlayout.TagFlowLayout
-import com.zhy.view.flowlayout.TagView
 
 
 class SystemRightAdapter :
@@ -19,27 +19,21 @@ class SystemRightAdapter :
     private lateinit var flowLayout: FlowLayout
 
     override fun convert(helper: BaseViewHolder?, item: SystemTree?) {
-
-//        helper?.setText(R.id.tv_irs_title, item?.name)
-//
-//        var str: String? = ""
-//        for (temp in item?.children!!) {
-//            str += temp.name + "\n"
-//        }
-//        helper?.setText(R.id.tv_irl_children, str)
-
         var flowLayout = helper!!.getView<TagFlowLayout>(R.id.id_flowlayout)
         flowLayout.adapter = item?.children?.let { TagAdapte(it) }
-
-
         flowLayout.setOnTagClickListener { view, position, parent ->
 
             if (item != null) {
-                Log.d("TAG",item.children[position].name)
-            }
+                var bundle = Bundle()
 
+                bundle.putString(TITLE, item.children[position].name)
+                bundle.putInt(CID, item.children[position].id)
+
+                var intent = Intent(mContext, SystemDetailActivity::class.java)
+                intent.putExtras(bundle)
+                mContext.startActivity(intent)
+            }
             true
         }
-
     }
 }

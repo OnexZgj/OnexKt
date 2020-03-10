@@ -34,4 +34,9 @@ abstract class BaseMvpFragment<in V : IView, P : IPresenter<in V>> : BaseFragmen
     override fun showInfo(info: String) {
         Toast.makeText(MainApp.getContext(), info, Toast.LENGTH_SHORT).show()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresent.detachView()
+    }
 }

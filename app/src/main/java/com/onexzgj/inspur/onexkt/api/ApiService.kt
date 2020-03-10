@@ -43,7 +43,13 @@ interface ApiService {
      * 获取知识体系
      */
     @GET("tree/json")
-    fun getSystemTree():Observable<BaseResponse<List<SystemTree>>>
+    fun getSystemTree(): Observable<BaseResponse<List<SystemTree>>>
+
+    /**
+     * 获取知识体系下的文章列表
+     */
+    @GET("article/list/{page}/json")
+    fun getSystemTreeArticle(@Path("page") page: Int, @Query("cid") cid: Int):Observable<BaseResponse<SystemTreeDetail>>
 
 
 }
